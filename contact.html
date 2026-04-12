@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Kunal Deo — the developer behind the Anti-Spoofing Liveness Detection system.">
+    <title>Contact — AntiSpoofing Liveness Detector</title>
+    <link rel="stylesheet" href="about.css">
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            background: var(--surface-hover);
+            border-color: rgba(0, 212, 255, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .team-card img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent1);
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 16px rgba(0, 212, 255, 0.2);
+        }
+
+        .team-card .name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .team-card a {
+            color: var(--accent1);
+            text-decoration: none;
+            font-size: 0.82rem;
+            word-break: break-all;
+            transition: var(--transition);
+        }
+
+        .team-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Anti-Spoofing / Liveness Detector &mdash; Fake VS Real</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="newser.html">Services</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-content">
+        <div class="section-title"><h3>Meet the Team</h3></div>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="images/kunal.png" alt="Kunal Deo">
+                <div class="name">Kunal Deo</div>
+                <a href="mailto:kunaldeo001@gmail.com">kunaldeo001<br>@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Anti-Spoofing Liveness Detection System. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

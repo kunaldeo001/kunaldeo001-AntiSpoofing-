@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Launch the live anti-spoofing camera demo directly from this page.">
+    <title>Start Detection — AntiSpoofing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0d0f14;
+            --bg2: #12151d;
+            --surface: rgba(255,255,255,0.04);
+            --surface-hover: rgba(255,255,255,0.08);
+            --border: rgba(255,255,255,0.08);
+            --accent1: #00d4ff;
+            --accent2: #7b2ff7;
+            --text-primary: #e8eaf0;
+            --text-secondary: #8b90a0;
+            --success: #00e676;
+            --danger: #ff5252;
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: rgba(13,15,20,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        header h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.45rem 1.1rem;
+            border-radius: 50px;
+            border: 1px solid transparent;
+            transition: 0.3s ease;
+            display: inline-block;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent1);
+            border-color: var(--accent1);
+            background: rgba(0,212,255,0.08);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem 5rem;
+        }
+
+        .launch-card {
+            background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(123,47,247,0.06));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3.5rem 2.5rem;
+            text-align: center;
+            max-width: 540px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .launch-card::before {
+            content: '';
+            position: absolute;
+            top: -80px; left: 50%;
+            transform: translateX(-50%);
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(0,212,255,0.1), transparent 70%);
+            pointer-events: none;
+        }
+
+        .camera-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
+        .launch-card h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .launch-card p {
+            color: var(--text-secondary);
+            font-size: 0.96rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1.5px solid transparent;
+            font-family: 'Inter', sans-serif;
+            transition: 0.3s ease;
+        }
+
+        #startBtn {
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(0,212,255,0.3);
+        }
+
+        #startBtn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(0,212,255,0.5);
+        }
+
+        #startBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        #stopBtn {
+            background: transparent;
+            color: var(--danger);
+            border-color: var(--danger);
+        }
+
+        #stopBtn:hover:not(:disabled) {
+            background: rgba(255,82,82,0.1);
+            transform: translateY(-2px);
+        }
+
+        #stopBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        /* Status badge */
+        #status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            margin-top: 1.8rem;
+            transition: 0.3s ease;
+        }
+
+        #status-badge.idle    { border-color: var(--border); color: var(--text-secondary); }
+        #status-badge.running { background: rgba(0,230,118,0.1); border-color: var(--success); color: var(--success); }
+        #status-badge.error   { background: rgba(255,82,82,0.1); border-color: var(--danger); color: var(--danger); }
+
+        .dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .dot.pulse { animation: pulse 1.5s infinite; }
+
+        @keyframes pulse {
+            0%,100% { opacity:1; transform:scale(1); }
+            50%      { opacity:0.35; transform:scale(0.65); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            background: var(--bg2);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Anti-Spoofing / Liveness Detector &mdash; Fake VS Real</h1>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/newser.html">Services</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="launch-card">
+            <span class="camera-icon">📷</span>
+            <h2>Launch Detection</h2>
+            <p>Click <strong>Start Camera</strong> to activate the YOLOv8 anti-spoofing model on your live webcam feed. Faces will be labelled <strong>REAL</strong> or <strong>FAKE</strong> in real time with a confidence percentage. Press <kbd>q</kbd> in the camera window to close it, or use the Stop button.</p>
+
+            <div class="btn-row">
+                <button class="btn" id="startBtn">▶ Start Camera</button>
+                <button class="btn" id="stopBtn" disabled>■ Stop Camera</button>
+            </div>
+
+            <div id="status-badge" class="idle">
+                <span class="dot"></span>
+                <span id="status-text">Idle — camera not running</span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Anti-Spoofing Liveness Detection System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn  = document.getElementById('stopBtn');
+        const badge    = document.getElementById('status-badge');
+        const statusTxt = document.getElementById('status-text');
+        const dot      = badge.querySelector('.dot');
+
+        function setStatus(state, message) {
+            badge.className = state;
+            statusTxt.textContent = message;
+            dot.className = state === 'running' ? 'dot pulse' : 'dot';
+        }
+
+        startBtn.addEventListener('click', async () => {
+            startBtn.disabled = true;
+            setStatus('idle', 'Starting camera…');
+            try {
+                const res  = await fetch('/run_python_program');
+                const data = await res.json();
+                if (data.status === 'started' || data.status === 'already_running') {
+                    setStatus('running', data.status === 'started'
+                        ? `Camera running (PID ${data.pid})`
+                        : 'Camera already running');
+                    stopBtn.disabled = false;
+                } else {
+                    setStatus('error', `Error: ${data.message}`);
+                    startBtn.disabled = false;
+                }
+            } catch (err) {
+                setStatus('error', 'Failed to connect to server.');
+                startBtn.disabled = false;
+            }
+        });
+
+        stopBtn.addEventListener('click', async () => {
+            stopBtn.disabled = true;
+            setStatus('idle', 'Stopping camera…');
+            try {
+                const res  = await fetch('/stop_python_program');
+                const data = await res.json();
+                setStatus('idle', 'Camera stopped.');
+                startBtn.disabled = false;
+            } catch (err) {
+                setStatus('error', 'Failed to stop the camera.');
+                stopBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>

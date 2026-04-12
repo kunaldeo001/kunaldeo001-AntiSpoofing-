@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Try the Anti-Spoofing Liveness Detection demo — launch the real-time camera detection directly from your browser.">
+    <title>Services — AntiSpoofing Liveness Detector</title>
+    <link rel="stylesheet" href="newser.css">
+</head>
+
+<body>
+    <header>
+        <h1>Anti-Spoofing / Liveness Detector &mdash; Fake VS Real</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="newser.html" class="active">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-content">
+        <div class="services-hero">
+            <h2>Try the Live Demo</h2>
+            <p>The <strong>Try Now</strong> button launches the real-time anti-spoofing camera demo via our Flask server. Our YOLOv8 model will instantly classify faces as <strong>REAL</strong> or <strong>FAKE</strong> with a confidence score overlaid on the video feed.</p>
+            <a class="btn btn-start" href="http://127.0.0.1:5000">Try Now</a>
+            <a class="btn btn-download" href="Anti-Spoof Program.zip" download="Anti_Spoof_Program">Download</a>
+
+            <div class="status-area">
+                <span id="status-badge"><span class="dot"></span> Awaiting camera…</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Anti-Spoofing Liveness Detection System. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+
+body {
+    color: #333; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9; 
+    text-align: center;
+}
+
+header {
+    background-color: #333; 
+    color: #fff; 
+    text-align: center;
+    padding: 40px 20px; 
+    border-bottom: 5px solid #ffcc00; 
+    margin-bottom: 20px; 
+}
+
+header h1 {
+    font-size: 28px; 
+    line-height: 1.5; 
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px; 
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px 20px; 
+    font-size: 16px;
+    border-radius: 5px; 
+    transition: background-color 0.3s, color 0.3s;
+    margin: 4px 2px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff; 
+}
+
+nav ul li:hover {
+    background-color: #444; /* Slightly darker background on hover */
+    color: #fff; /* White text on hover */
+}
+
+nav ul li a:hover {
+    color: #fff; /* Darker yellow on hover */
+}
+
+/* Anchor Styles */
+a {
+    color: #333; /* Dark gray text */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff9900; /* Darker yellow on hover */
+}
+
+.ed:link, .ed:visited {
+    color: #ffcc00; /* Yellow text */
+}
+
+/* Button Styles */
+.ch, .che {
+    margin-top: 50px;
+    display: inline-block;
+    padding: 12px 24px; /* Increased padding for buttons */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.ch {
+    border: 2px solid #3498db; /* Blue border */
+    color: #3498db; /* Blue text */
+}
+
+.ch:hover {
+    background-color: #3498db; /* Blue background on hover */
+    color: #fff; /* White text on hover */
+}
+
+.che {
+    border: 2px solid #39db34; /* Green border */
+    color: #39db34; /* Green text */
+}
+
+.che:hover {
+    background-color: #39db34; /* Green background on hover */
+    color: #fff; /* White text on hover */
+}
+
+/* Paragraph and Div Styling */
+body p {
+    font-size: 19px; /* Consistent font size */
+    max-width: 800px; /* Center alignment */
+    margin: 20px auto;
+    padding: 20px;
+    text-align: justify;
+    background-color: #fff; /* White background for readability */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+div {
+    max-width: 800px; /* Center alignment */
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333; /* Dark gray background */
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    border-top: 5px solid #ffcc00; /* Yellow border for footer */
+}
